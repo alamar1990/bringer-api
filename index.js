@@ -1,0 +1,5 @@
+module.exports = {
+  watch: ['src/**/*.ts'],
+  ignore: ['src/**/*.spec.ts'],
+  exec: 'ts-node ./src/server.ts'
+}

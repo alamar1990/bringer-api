@@ -1,0 +1,10 @@
+module.exports = {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "arrowParens": "always",
+    "endOfLine": "auto",
+    "max-len": ["error", {"code": 120}]
+};
