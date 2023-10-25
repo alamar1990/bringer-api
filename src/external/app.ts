@@ -4,6 +4,7 @@ import helmet from 'helmet'
 import '../modules/auth/infrastructure/passport'
 import userRoute from '../modules/user/infrastructure/route/user.route'
 import authRoute from '../modules/auth/infrastructure/route/auth.route'
+import trackingRoutes from '../modules/tracking/infrastructure/router/tracking.route'
 
 const app = express()
 
@@ -28,6 +29,9 @@ app.use(userRoute)
 
 // Auth routes
 app.use(authRoute)
+
+// Auth routes
+app.use(trackingRoutes)
 
 // Test route to /
 app.get('/', (_req, res) => {
