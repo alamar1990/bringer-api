@@ -12,13 +12,13 @@ export class TrackingController {
           message: `[CONTROLLER ERROR] missing tracking number`
         })
       }
-      const trackingData = this.trackingUseCase.trackParcel(query)
+      const {tracking_number} = query
+      const trackingData = await this.trackingUseCase.trackParcel(tracking_number)      
 
-      return res.json({ trackingData: trackingData })
+      return res.json({ trackingData })
     } catch (e) {
-      console.error(e)
       return res.status(500).send({
-        message: `[CONTROLLER ERROR] ${e}`
+        message: `[CONTROLLER ERROR] ${e.response.data.message}`
       })
     }
   }

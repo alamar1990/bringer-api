@@ -1,15 +1,16 @@
 import axios from "axios"
+import { config } from "../../../config"
 
 
 export class TrackingUseCase {
   constructor() {}
 
-  public async trackParcel({ trackingNumber }: { trackingNumber: string }) {
+  public async trackParcel(trackingNumber: string) {
     try {
-      const REQ_URL = `https://bps.bringer.io/public/api/v2/get/parcel/tracking.json?tracking_number=BPS1EP58YI5SKBR`
-      const res = await axios.get(REQ_URL)
+      const urlWithTrackingNumber = `${config.RD_PARTY_URL}${trackingNumber}`
+      const { data } = await axios.get(urlWithTrackingNumber)
 
-      return res
+      return data
     } catch (error) {
       throw error
     }
