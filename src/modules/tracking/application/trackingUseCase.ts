@@ -7,6 +7,8 @@ export class TrackingUseCase {
 
   public async trackParcel(trackingNumber: string) {
     try {
+      if (!trackingNumber) throw new Error('No tracking code provided')
+
       const urlWithTrackingNumber = `${config.RD_PARTY_URL}${trackingNumber}`
       const { data } = await axios.get(urlWithTrackingNumber)
 
