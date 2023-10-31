@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { TrackingUseCase } from '../../application/trackingUseCase'
 import { TrackingController } from '../controller/tracking.controller'
+import { authenticate } from '../../../auth/infrastructure/middleware'
 
 const trackingRoutes = Router()
 
@@ -15,6 +16,6 @@ const trackingUseCase = new TrackingUseCase()
  */
 const trackingController = new TrackingController(trackingUseCase)
 
-trackingRoutes.get('/tracking-parcel', trackingController.trackingParcel)
+trackingRoutes.get('/tracking-parcel', authenticate, trackingController.trackingParcel)
 
 export default trackingRoutes

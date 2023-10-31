@@ -1,6 +1,5 @@
-import axios from "axios"
-import { config } from "../../../config"
-
+import axios from 'axios'
+import { config } from '../../../config'
 
 export class TrackingUseCase {
   constructor() {}
@@ -9,8 +8,12 @@ export class TrackingUseCase {
     try {
       if (!trackingNumber) throw new Error('No tracking code provided')
 
+      const axiosConfig = {
+        headers: { Authorization: `Bearer ${config.RD_PARTY_TOKEN}` }
+      }
+
       const urlWithTrackingNumber = `${config.RD_PARTY_URL}${trackingNumber}`
-      const { data } = await axios.get(urlWithTrackingNumber)
+      const { data } = await axios.get(urlWithTrackingNumber, axiosConfig)
 
       return data
     } catch (error) {

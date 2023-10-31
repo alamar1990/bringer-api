@@ -14,6 +14,7 @@ export type Configuration = {
   JWT_SECRET: string
   JWT_TOKEN_EXPIRATION: string
   RD_PARTY_URL: string
+  RD_PARTY_TOKEN: string
 }
 
 let currentConfig: Configuration = DEVELOPMENT
