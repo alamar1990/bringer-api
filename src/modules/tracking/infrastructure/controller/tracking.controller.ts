@@ -16,9 +16,18 @@ export class TrackingController {
       const trackingData = await this.trackingUseCase.trackParcel(tracking_number)      
 
       return res.json({ trackingData })
-    } catch (e) {
+    } catch (error) {
+      if (error.remote_api_error){
+        console.log({error: error.error.response});
+        const errorData = error.error?.response?.data
+        
+        return res.status(500).send({
+          error: errorData,
+          remote_api_error: error.remote_api_error
+        })
+      }
       return res.status(500).send({
-        message: `[CONTROLLER ERROR] ${e.response.data.message}`
+        error: error
       })
     }
   }

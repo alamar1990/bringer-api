@@ -17,7 +17,10 @@ export class TrackingUseCase {
 
       return data
     } catch (error) {
-      throw error
+      throw {
+        error,
+        remote_api_error: true
+      }
     }
   }
 }
