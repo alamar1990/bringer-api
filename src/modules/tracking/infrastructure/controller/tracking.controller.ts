@@ -18,7 +18,6 @@ export class TrackingController {
       return res.json({ trackingData })
     } catch (error) {
       if (error.remote_api_error){
-        console.log({error: error.error.response});
         const errorData = error.error?.response?.data
         
         return res.status(500).send({
